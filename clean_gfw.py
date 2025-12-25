@@ -14,38 +14,42 @@ def build_ros_script():
         resp = requests.get(SOURCE_URL, timeout=30)
         resp.raise_for_status()
         
-        raw_domains = resp.text.splitlines()
-        clean_domains = []
+        raw_lines = resp.text.splitlines()
+        clean_domains = set()
 
-        for line in raw_domains:
+        # Regex pattern to catch common prefix garbage: ^, .*, \., and leading dots
+        prefix_pattern = re.compile(r'^(\^|\.\*|\\\.)+')
+        # Regex pattern to catch suffix garbage: $
+        suffix_pattern = re.compile(r'\$$')
+
+        for line in raw_lines:
             line = line.strip()
             # Skip comments and empty lines
             if not line or line.startswith("#"):
                 continue
             
-            # Cleaning logic: remove regex characters to get pure domains
-            # 1. Remove regex prefixes like ^, .*, \.
-            domain = re.sub(r'^(\^|\.\*|\\\.)+', '', line)
-            # 2. Remove regex suffix $
-            domain = re.sub(r'\$$', '', domain)
-            # 3. Strip any remaining leading or trailing dots
-            domain = domain.strip('.')
+            # Step-by-step cleaning
+            # 1. Strip the regex prefix (^.*\. or similar)
+            tmp = prefix_pattern.sub('', line)
+            # 2. Strip the regex suffix ($)
+            tmp = suffix_pattern.sub('', tmp)
+            # 3. Handle escaped dots (replace \. with .)
+            tmp = tmp.replace('\\.', '.')
+            # 4. Final trim of any accidental leading/trailing dots
+            domain = tmp.strip('.')
             
-            # Basic validation: must contain a dot and be of reasonable length
+            # Basic validation: must contain a dot and be at least 4 chars
             if "." in domain and len(domain) > 3:
-                clean_domains.append(domain)
+                clean_domains.add(domain)
         
-        # Remove duplicates and sort alphabetically
-        unique_domains = sorted(list(set(clean_domains)))
+        # Sort alphabetically
+        sorted_domains = sorted(list(clean_domains))
         
-        # Build RouterOS .rsc script
-        ros_commands = []
-        # Step 1: Remove existing entries managed by this script
-        ros_commands.append("/ip dns static remove [find comment=\"GFW_AUTO\"]")
+        # Build RouterOS script
+        ros_commands = ["/ip dns static remove [find comment=\"GFW_AUTO\"]"]
         
-        # Step 2: Add pure domain forwarding rules for ROS v7
-        for dom in unique_domains:
-            # Use type=FWD with match-subdomain=yes for optimal performance
+        for dom in sorted_domains:
+            # Using clean domain names for ROS v7 FWD type
             cmd = (
                 f"/ip dns static add name=\"{dom}\" type=FWD "
                 f"forward-to={GW_IP} match-subdomain=yes "
@@ -53,11 +57,10 @@ def build_ros_script():
             )
             ros_commands.append(cmd)
             
-        # Write the output file
         with open("gfw_list.rsc", "w") as f:
             f.write("\n".join(ros_commands))
             
-        print(f"Success! Processed {len(unique_domains)} clean domains.")
+        print(f"Success! Generated {len(sorted_domains)} clean domain entries.")
             
     except Exception as e:
         print(f"Error occurred: {e}")
