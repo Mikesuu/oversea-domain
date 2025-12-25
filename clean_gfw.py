@@ -23,28 +23,27 @@ def build_ros_script():
             if not line or line.startswith("#"):
                 continue
             
-            # AGGRESSIVE CLEANING:
-            # 1. Remove anything that isn't a word character, a dot, or a hyphen
-            # This kills ^, *, +, \, $, etc. in one go
+            # STEP 1: Remove all characters that are NOT letters, numbers, dots, or hyphens
+            # This cleans out ^, *, +, \, $, etc.
             tmp = re.sub(r'[^a-zA-Z0-9\.\-]', '', line)
             
-            # 2. Remove leading dots (e.g., .google.com becomes google.com)
-            domain = tmp.lstrip('.')
+            # STEP 2: Remove any non-alphanumeric characters from the START of the string
+            # This specifically fixes the "-." or "." or "-" at the beginning
+            domain = re.sub(r'^[^a-zA-Z0-9]+', '', tmp)
             
-            # 3. Final validation: Must have at least one dot and be long enough
-            # Also ensure it doesn't end with a dot
-            if "." in domain and len(domain) > 3 and not domain.endswith('.'):
+            # STEP 3: Final validation
+            # Must have at least one dot, be long enough, and start with a letter/number
+            if "." in domain and len(domain) > 3 and domain[0].isalnum():
                 clean_domains.add(domain)
         
         # Sort alphabetically
         sorted_domains = sorted(list(clean_domains))
         
-        # Build RouterOS script commands
+        # Build RouterOS script
         ros_commands = ["/ip dns static remove [find comment=\"GFW_AUTO\"]"]
         
         for dom in sorted_domains:
-            # Using clean domain names for ROS v7 FWD type
-            # name="google.com" (No more + or ^ symbols)
+            # name="google.com" (Clean, starts with alphanumeric)
             cmd = (
                 f"/ip dns static add name=\"{dom}\" type=FWD "
                 f"forward-to={GW_IP} match-subdomain=yes "
