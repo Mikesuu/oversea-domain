@@ -1,43 +1,37 @@
 import requests
-import re
 
-# Source: Loyalsoldier Clash Rules - GFW list
+# Source URL
 SOURCE_URL = "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
-# Target Gateway (Your Sidecar Gateway IP)
-GATEWAY_IP = "10.10.10.3"
-# Address List Name
+# Target sidecar gateway IP
+GW_IP = "10.10.10.3"
+# ROS Address List name
 LIST_NAME = "GFW_List"
 
-def generate_ros_script():
+def build_ros_script():
     try:
-        response = requests.get(SOURCE_URL)
-        response.raise_for_status()
-        lines = response.text.splitlines()
+        resp = requests.get(SOURCE_URL, timeout=30)
+        resp.raise_for_status()
         
-        # Filter valid domains only
-        domains = []
-        for line in lines:
-            line = line.strip()
-            if line and not line.startswith("#") and "." in line:
-                domains.append(line)
+        # Filter: ignore comments, empty lines, and ensure it looks like a domain
+        domains = [l.strip() for l in resp.text.splitlines() if l.strip() and not l.startswith("#") and "." in l]
         
-        # Build ROS Script
-        ros_commands = []
-        ros_commands.append("/ip dns static")
-        ros_commands.append("remove [find comment=\"GFW_AUTO_ADDED\"]")
+        # ROS Commands
+        # 1. Clean old rules first
+        output = ["/ip dns static remove [find comment=\"GFW_AUTO\"]"]
         
+        # 2. Add new rules
+        # Using type=FWD for ROS v7 (more efficient than complex regex)
         for dom in domains:
-            # Escape dots for regex
-            escaped_dom = dom.replace(".", "\\\\.")
-            # Regex to match domain and all subdomains
-            cmd = f"add regexp=\".*\\\\.{escaped_dom}\" forward-to={GATEWAY_IP} address-list={LIST_NAME} comment=\"GFW_AUTO_ADDED\""
-            ros_commands.append(cmd)
+            # Match domain and all subdomains
+            line = f"/ip dns static add name=\"{dom}\" type=FWD forward-to={GW_IP} match-subdomain=yes address-list={LIST_NAME} comment=\"GFW_AUTO\""
+            output.append(line)
             
         with open("gfw_list.rsc", "w") as f:
-            f.write("\n".join(ros_commands))
+            f.write("\n".join(output))
+            print(f"Success: {len(domains)} domains processed.")
             
     except Exception as e:
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    generate_ros_script()
+    build_ros_script()
