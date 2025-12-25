@@ -17,39 +17,34 @@ def build_ros_script():
         raw_lines = resp.text.splitlines()
         clean_domains = set()
 
-        # Regex pattern to catch common prefix garbage: ^, .*, \., and leading dots
-        prefix_pattern = re.compile(r'^(\^|\.\*|\\\.)+')
-        # Regex pattern to catch suffix garbage: $
-        suffix_pattern = re.compile(r'\$$')
-
         for line in raw_lines:
             line = line.strip()
             # Skip comments and empty lines
             if not line or line.startswith("#"):
                 continue
             
-            # Step-by-step cleaning
-            # 1. Strip the regex prefix (^.*\. or similar)
-            tmp = prefix_pattern.sub('', line)
-            # 2. Strip the regex suffix ($)
-            tmp = suffix_pattern.sub('', tmp)
-            # 3. Handle escaped dots (replace \. with .)
-            tmp = tmp.replace('\\.', '.')
-            # 4. Final trim of any accidental leading/trailing dots
-            domain = tmp.strip('.')
+            # AGGRESSIVE CLEANING:
+            # 1. Remove anything that isn't a word character, a dot, or a hyphen
+            # This kills ^, *, +, \, $, etc. in one go
+            tmp = re.sub(r'[^a-zA-Z0-9\.\-]', '', line)
             
-            # Basic validation: must contain a dot and be at least 4 chars
-            if "." in domain and len(domain) > 3:
+            # 2. Remove leading dots (e.g., .google.com becomes google.com)
+            domain = tmp.lstrip('.')
+            
+            # 3. Final validation: Must have at least one dot and be long enough
+            # Also ensure it doesn't end with a dot
+            if "." in domain and len(domain) > 3 and not domain.endswith('.'):
                 clean_domains.add(domain)
         
         # Sort alphabetically
         sorted_domains = sorted(list(clean_domains))
         
-        # Build RouterOS script
+        # Build RouterOS script commands
         ros_commands = ["/ip dns static remove [find comment=\"GFW_AUTO\"]"]
         
         for dom in sorted_domains:
             # Using clean domain names for ROS v7 FWD type
+            # name="google.com" (No more + or ^ symbols)
             cmd = (
                 f"/ip dns static add name=\"{dom}\" type=FWD "
                 f"forward-to={GW_IP} match-subdomain=yes "
