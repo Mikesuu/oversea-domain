@@ -1,28 +1,31 @@
-name: Update GFW List for ROS
+name: GFW List Auto Sync
 on:
   schedule:
-    - cron: '0 20 * * *' # Runs at 04:00 China Time daily
+    - cron: '0 21 * * *' # 05:00 AM China Time
   workflow_dispatch:
 
 jobs:
-  build:
+  run_sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.9'
 
-      - name: Run Cleaner
+      - name: Install Dependencies
+        run: pip install requests
+
+      - name: Process Data
         run: python clean_gfw.py
 
-      - name: Commit and Push
+      - name: Push to Repository
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "Bot"
+          git config --global user.email "bot@github.com"
           git add gfw_list.rsc
-          git commit -m "Update GFW list" || exit 0
+          git commit -m "Update GFW list $(date +'%Y-%m-%d')" || exit 0
           git push
