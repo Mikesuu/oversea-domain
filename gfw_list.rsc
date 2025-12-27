@@ -1017,7 +1017,6 @@
 /ip firewall address-list add list=GFW_List address=chromecast.com
 /ip firewall address-list add list=GFW_List address=chromeexperiments.com
 /ip firewall address-list add list=GFW_List address=chromestatus.com
-/ip firewall address-list add list=GFW_List address=chromium.org
 /ip firewall address-list add list=GFW_List address=chuang-yen.org
 /ip firewall address-list add list=GFW_List address=chubold.com
 /ip firewall address-list add list=GFW_List address=chubun.com
@@ -3124,6 +3123,7 @@
 /ip firewall address-list add list=GFW_List address=looktoronto.com
 /ip firewall address-list add list=GFW_List address=lotsawahouse.org
 /ip firewall address-list add list=GFW_List address=lotuslight.org.tw
+/ip firewall address-list add list=GFW_List address=lovart.ai
 /ip firewall address-list add list=GFW_List address=lovetvshow.com
 /ip firewall address-list add list=GFW_List address=lpsg.com
 /ip firewall address-list add list=GFW_List address=lrfz.com
