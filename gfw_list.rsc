@@ -221,6 +221,7 @@
 /ip firewall address-list add list=GFW_List address=aliengu.com
 /ip firewall address-list add list=GFW_List address=alive.bar
 /ip firewall address-list add list=GFW_List address=aljazeera.com
+/ip firewall address-list add list=GFW_List address=aljazeera.net
 /ip firewall address-list add list=GFW_List address=alkasir.com
 /ip firewall address-list add list=GFW_List address=all4mom.org
 /ip firewall address-list add list=GFW_List address=allcoin.com
@@ -1287,7 +1288,6 @@
 /ip firewall address-list add list=GFW_List address=delcamp.net
 /ip firewall address-list add list=GFW_List address=demo.unlock-music.dev
 /ip firewall address-list add list=GFW_List address=demosisto.hk
-/ip firewall address-list add list=GFW_List address=deno.dev
 /ip firewall address-list add list=GFW_List address=depositphotos.com
 /ip firewall address-list add list=GFW_List address=desc.se
 /ip firewall address-list add list=GFW_List address=desipro.de
@@ -1357,7 +1357,6 @@
 /ip firewall address-list add list=GFW_List address=docker.com
 /ip firewall address-list add list=GFW_List address=docker.io
 /ip firewall address-list add list=GFW_List address=dockerstatus.com
-/ip firewall address-list add list=GFW_List address=docs.deno.com
 /ip firewall address-list add list=GFW_List address=docs.new
 /ip firewall address-list add list=GFW_List address=doctorvoice.org
 /ip firewall address-list add list=GFW_List address=documentingreality.com
@@ -1983,6 +1982,7 @@
 /ip firewall address-list add list=GFW_List address=gfw.press
 /ip firewall address-list add list=GFW_List address=gfw.report
 /ip firewall address-list add list=GFW_List address=gfwatch.org
+/ip firewall address-list add list=GFW_List address=gfwbao.com
 /ip firewall address-list add list=GFW_List address=ggpht.com
 /ip firewall address-list add list=GFW_List address=ggssl.com
 /ip firewall address-list add list=GFW_List address=ghidra-sre.org
@@ -2771,6 +2771,7 @@
 /ip firewall address-list add list=GFW_List address=ismprofessional.net
 /ip firewall address-list add list=GFW_List address=isohunt.com
 /ip firewall address-list add list=GFW_List address=israbox.com
+/ip firewall address-list add list=GFW_List address=issues.chromium.org
 /ip firewall address-list add list=GFW_List address=issuu.com
 /ip firewall address-list add list=GFW_List address=istars.co.nz
 /ip firewall address-list add list=GFW_List address=istockphoto.com
@@ -4609,6 +4610,7 @@
 /ip firewall address-list add list=GFW_List address=stboy.net
 /ip firewall address-list add list=GFW_List address=stc.com.sa
 /ip firewall address-list add list=GFW_List address=steamcommunity.com
+/ip firewall address-list add list=GFW_List address=steamladder.com
 /ip firewall address-list add list=GFW_List address=steamstatic.com
 /ip firewall address-list add list=GFW_List address=steel-storm.com
 /ip firewall address-list add list=GFW_List address=steemit.com
