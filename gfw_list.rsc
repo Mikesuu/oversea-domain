@@ -3866,6 +3866,7 @@
 /ip firewall address-list add list=GFW_List address=pdetails.com
 /ip firewall address-list add list=GFW_List address=pdproxy.com
 /ip firewall address-list add list=GFW_List address=pds.nasa.gov
+/ip firewall address-list add list=GFW_List address=pdst.fm
 /ip firewall address-list add list=GFW_List address=peace.ca
 /ip firewall address-list add list=GFW_List address=peacefire.org
 /ip firewall address-list add list=GFW_List address=peeasian.com
@@ -5259,6 +5260,7 @@
 /ip firewall address-list add list=GFW_List address=unstable.icu
 /ip firewall address-list add list=GFW_List address=unwire.hk
 /ip firewall address-list add list=GFW_List address=uocn.org
+/ip firewall address-list add list=GFW_List address=up.audio
 /ip firewall address-list add list=GFW_List address=upbit.com
 /ip firewall address-list add list=GFW_List address=updates.tdesktop.com
 /ip firewall address-list add list=GFW_List address=upghsbc.com
