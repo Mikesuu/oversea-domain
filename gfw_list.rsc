@@ -193,6 +193,7 @@
 /ip firewall address-list add list=GFW_List address=agro.hk
 /ip firewall address-list add list=GFW_List address=ai.binwang.me
 /ip firewall address-list add list=GFW_List address=ai.dev
+/ip firewall address-list add list=GFW_List address=ai.studio
 /ip firewall address-list add list=GFW_List address=aiosearch.com
 /ip firewall address-list add list=GFW_List address=aiph.net
 /ip firewall address-list add list=GFW_List address=airasia.com
@@ -1260,6 +1261,7 @@
 /ip firewall address-list add list=GFW_List address=dawangidc.com
 /ip firewall address-list add list=GFW_List address=daxa.cn
 /ip firewall address-list add list=GFW_List address=daylife.com
+/ip firewall address-list add list=GFW_List address=dazn.com
 /ip firewall address-list add list=GFW_List address=db.tt
 /ip firewall address-list add list=GFW_List address=dbgjd.com
 /ip firewall address-list add list=GFW_List address=dcard.tw
@@ -3755,6 +3757,8 @@
 /ip firewall address-list add list=GFW_List address=onthehunt.com
 /ip firewall address-list add list=GFW_List address=ontrac.com
 /ip firewall address-list add list=GFW_List address=oojj.de
+/ip firewall address-list add list=GFW_List address=ooni.io
+/ip firewall address-list add list=GFW_List address=ooni.org
 /ip firewall address-list add list=GFW_List address=open.com.hk
 /ip firewall address-list add list=GFW_List address=open.firstory.me
 /ip firewall address-list add list=GFW_List address=openai.com
@@ -5741,6 +5745,7 @@
 /ip firewall address-list add list=GFW_List address=xbookcn.com
 /ip firewall address-list add list=GFW_List address=xbtce.com
 /ip firewall address-list add list=GFW_List address=xcafe.in
+/ip firewall address-list add list=GFW_List address=xcancel.com
 /ip firewall address-list add list=GFW_List address=xcity.jp
 /ip firewall address-list add list=GFW_List address=xcritic.com
 /ip firewall address-list add list=GFW_List address=xerotica.com
