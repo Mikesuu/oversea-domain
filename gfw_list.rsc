@@ -1019,6 +1019,7 @@
 /ip firewall address-list add list=GFW_List address=chromecast.com
 /ip firewall address-list add list=GFW_List address=chromeexperiments.com
 /ip firewall address-list add list=GFW_List address=chromestatus.com
+/ip firewall address-list add list=GFW_List address=chromium.org
 /ip firewall address-list add list=GFW_List address=chuang-yen.org
 /ip firewall address-list add list=GFW_List address=chubold.com
 /ip firewall address-list add list=GFW_List address=chubun.com
@@ -2773,7 +2774,6 @@
 /ip firewall address-list add list=GFW_List address=ismprofessional.net
 /ip firewall address-list add list=GFW_List address=isohunt.com
 /ip firewall address-list add list=GFW_List address=israbox.com
-/ip firewall address-list add list=GFW_List address=issues.chromium.org
 /ip firewall address-list add list=GFW_List address=issuu.com
 /ip firewall address-list add list=GFW_List address=istars.co.nz
 /ip firewall address-list add list=GFW_List address=istockphoto.com
