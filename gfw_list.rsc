@@ -141,6 +141,7 @@
 /ip firewall address-list add list=GFW_List address=abitno.linpie.com
 /ip firewall address-list add list=GFW_List address=ablwang.com
 /ip firewall address-list add list=GFW_List address=aboluowang.com
+/ip firewall address-list add list=GFW_List address=about.gitlab.com
 /ip firewall address-list add list=GFW_List address=about.me
 /ip firewall address-list add list=GFW_List address=abplive.com
 /ip firewall address-list add list=GFW_List address=abs.edu
@@ -2003,7 +2004,6 @@
 /ip firewall address-list add list=GFW_List address=githubassets.com
 /ip firewall address-list add list=GFW_List address=githubcopilot.com
 /ip firewall address-list add list=GFW_List address=githubusercontent.com
-/ip firewall address-list add list=GFW_List address=gitlab.com
 /ip firewall address-list add list=GFW_List address=gitlab.net
 /ip firewall address-list add list=GFW_List address=gizlen.net
 /ip firewall address-list add list=GFW_List address=gjczz.com
