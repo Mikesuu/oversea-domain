@@ -206,6 +206,7 @@
 /ip firewall address-list add list=GFW_List address=aiweiwei.com
 /ip firewall address-list add list=GFW_List address=aiweiweiblog.com
 /ip firewall address-list add list=GFW_List address=akademiye.org
+/ip firewall address-list add list=GFW_List address=akamai.tvb.com
 /ip firewall address-list add list=GFW_List address=akamaihd.net
 /ip firewall address-list add list=GFW_List address=akiba-online.com
 /ip firewall address-list add list=GFW_List address=akiba-web.com
@@ -279,7 +280,10 @@
 /ip firewall address-list add list=GFW_List address=angularjs.org
 /ip firewall address-list add list=GFW_List address=animecrazy.net
 /ip firewall address-list add list=GFW_List address=aniscartujo.com
+/ip firewall address-list add list=GFW_List address=annas-archive.in
+/ip firewall address-list add list=GFW_List address=annas-archive.li
 /ip firewall address-list add list=GFW_List address=annas-archive.org
+/ip firewall address-list add list=GFW_List address=annas-archive.pm
 /ip firewall address-list add list=GFW_List address=annas-archive.se
 /ip firewall address-list add list=GFW_List address=annatam.com
 /ip firewall address-list add list=GFW_List address=anobii.com
@@ -1782,7 +1786,6 @@
 /ip firewall address-list add list=GFW_List address=forum.mymaji.com
 /ip firewall address-list add list=GFW_List address=forum.palmislife.com
 /ip firewall address-list add list=GFW_List address=forum.slime.com.tw
-/ip firewall address-list add list=GFW_List address=forum.tvb.com
 /ip firewall address-list add list=GFW_List address=forum.xinbao.de
 /ip firewall address-list add list=GFW_List address=forum4hk.com
 /ip firewall address-list add list=GFW_List address=fountmedia.io
@@ -3465,6 +3468,7 @@
 /ip firewall address-list add list=GFW_List address=myspacecdn.com
 /ip firewall address-list add list=GFW_List address=mytalkbox.com
 /ip firewall address-list add list=GFW_List address=mytizi.com
+/ip firewall address-list add list=GFW_List address=mytvsuper.com
 /ip firewall address-list add list=GFW_List address=mywife.cc
 /ip firewall address-list add list=GFW_List address=mywww.biz
 /ip firewall address-list add list=GFW_List address=myz.info
@@ -5129,6 +5133,7 @@
 /ip firewall address-list add list=GFW_List address=tv.com
 /ip firewall address-list add list=GFW_List address=tv.jtbc.joins.com
 /ip firewall address-list add list=GFW_List address=tvants.com
+/ip firewall address-list add list=GFW_List address=tvbanywhere.com
 /ip firewall address-list add list=GFW_List address=tvboxnow.com
 /ip firewall address-list add list=GFW_List address=tvider.com
 /ip firewall address-list add list=GFW_List address=tvmost.com.hk
