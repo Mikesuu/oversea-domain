@@ -5555,6 +5555,7 @@
 /ip firewall address-list add list=GFW_List address=wefong.com
 /ip firewall address-list add list=GFW_List address=wego.here.com
 /ip firewall address-list add list=GFW_List address=weiboleak.com
+/ip firewall address-list add list=GFW_List address=weights.com
 /ip firewall address-list add list=GFW_List address=weihuo.org
 /ip firewall address-list add list=GFW_List address=weijingsheng.org
 /ip firewall address-list add list=GFW_List address=weiming.info
@@ -5876,6 +5877,7 @@
 /ip firewall address-list add list=GFW_List address=youdontcare.com
 /ip firewall address-list add list=GFW_List address=youjizz.com
 /ip firewall address-list add list=GFW_List address=youmaker.com
+/ip firewall address-list add list=GFW_List address=youmind.com
 /ip firewall address-list add list=GFW_List address=youngpornvideos.com
 /ip firewall address-list add list=GFW_List address=youngspiration.hk
 /ip firewall address-list add list=GFW_List address=youpai.org
